@@ -1,15 +1,113 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <div class="container">
+    <div></div>
+    <div class="item">
+      <h1>Hi I'm Ryan Zoleta,<br />Full Stack Developer.</h1>
+      <h3>Aboue Me</h3>
+      <p>Hi there! I'm Ryan, a passionate introvert who loves building things on the internet.</p>
+      <p>
+        My first experience programming was in high school when we had to code websites with HTML
+        and JavaScript. Like every class in school, I thought it mostly boring and was just on.
+      </p>
+      <p>
+        Fast forward a couple years and I tried to self-teach myself Python (with <a
+          href="https://inventwithpython.com/invent4thed/chapter1.html">website</a
+        >) and oh boy was it a whole different experience. I fell in love with programming almost
+        immediately. For me, programming was literal ✨magic✨. And it was magic that **I** could
+        do. Like, how awesome is that!?
+      </p>
+      <p>
+        At first I wanted to be a game developer, because who doesn't, right? I tried my luck with
+        Game Maker and Pygame and even released a few (ultra) basic games at yoyogames.com.
+      </p>
+      <p>
+        In the end though I just became a boring old developer making boring old applications.
+        Thankfully, I still find the mere process of making something (no matter how boring or niche
+        it is) truly delightful. Though my passion for game dev died out, my passion for programming
+        remain strong till this day.
+      </p>
+      <p>
+        I went to college to get a Computer Science degree and soon got a job as a consultant at
+        Oracle making enterprise billing software for utility companies. Not really exciting, but
+        hey, it paid the bills.
+      </p>
+      <p>But recently, I've wanted to stretch my horizons a bit and try something more exciting.</p>
+      <p>
+        I always wanted to become a web developer. I've always been fascinated with the cool stuff
+        and apps that really smart and creative people put out there (link some inspirational sites
+        here). And so I decided to learn fullstack web dev starting with React.
+      </p>
+      <p>
+        In general, I have a simple phiolosophy: things can be better, and if no one else will make
+        it better, then I should probably do.
+      </p>
+
+      <h3>Skills</h3>
+      <p>
+        Going into fullstack dev I realized just the breadth of things I had to learn. It's both
+        exciting and overwhelming at times but through diligent self-studying and hacking away at
+        side projects (including countless nights trying to understand what the heck a react "hook"
+        is), I've developed a solid set of skills that allows me to rapidly build fullstack web apps
+        from ideation to deployment.
+      </p>
+      <div class="container-4">
+        <div>
+          <ul>
+            <li>React</li>
+            <li>JavaScript & TypeScript</li>
+            <li>HTML & CSS</li>
+            <li>Java</li>
+            <li>MySQL</li>
+            <li>Firebase</li>
+            <li>Python</li>
+            <li>Django</li>
+            <li>Flask</li>
+            <li>Bootstrap</li>
+            <li>Tailwind</li>
+            <li>Prisma</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Projects</h3>
+      <p>
+        Nothing brings me more joy than sitting down at a computer and coding for hours on end. And
+        so, I like to do it as often as possible. Here are some of the things I've built.
+      </p>
+
+      <h3>Contact</h3>
+      <p>Feel free to reach out about anything!</p>
+      <p>ryanarnold.zoleta@gmail.com</p>
+      <div class="socials">
+        <span class="social-link"><a href="https://github.com/ryanarnold/">GitHub</a></span>
+        <span class="social-link"
+          ><a href="https://www.linkedin.com/in/ryan-arnold-zoleta-a62756119/">LinkedIn</a>
+        </span>
+      </div>
+
+      <Footer />
+    </div>
+    <div></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .socials {
+    text-align: left;
+  }
+
+  .social-link {
+    margin-right: 10px;
+  }
+</style>
