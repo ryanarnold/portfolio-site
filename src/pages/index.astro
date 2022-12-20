@@ -4,82 +4,133 @@ import Footer from "../components/footer.astro";
 import Nagivation from "../components/nagivation.astro";
 ---
 
+<script>
+  import { annotate } from "rough-notation";
+
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  async function applyAnnotations() {
+    let elements = document.getElementsByClassName("highlight");
+    Array.from(elements).forEach(async (element) => {
+      let annotation;
+      if (element.classList.contains("yellow")) {
+        annotation = annotate(element as HTMLElement, { type: "highlight", color: "#fffcba" });
+      } else if (element.classList.contains("blue")) {
+        annotation = annotate(element as HTMLElement, { type: "highlight", color: "#b3c6ff" });
+      } else if (element.classList.contains("red")) {
+        annotation = annotate(element as HTMLElement, { type: "highlight", color: "#ffdede" });
+      } else if (element.classList.contains("green")) {
+        annotation = annotate(element as HTMLElement, { type: "highlight", color: "#b0ffbe" });
+      } else {
+        annotation = annotate(element as HTMLElement, { type: "highlight", color: "#f6d9ff" });
+      }
+      annotation.show();
+    });
+
+    elements = document.getElementsByClassName("underline");
+
+    Array.from(elements).forEach(async (element) => {
+      let annotation;
+      annotation = annotate(element as HTMLElement, { type: "underline", color: "#f6d9ff" });
+      annotation.show();
+    });
+
+    elements = document.getElementsByClassName("circle");
+
+    Array.from(elements).forEach(async (element) => {
+      let annotation;
+      annotation = annotate(element as HTMLElement, { type: "circle", color: "#b3c6ff" });
+      annotation.show();
+    });
+  }
+
+  applyAnnotations();
+</script>
+
 <BaseLayout>
   <div class="container">
     <div></div>
     <div class="item">
       <Nagivation />
+
       <div>
-        <h1>Hi I'm Ryan Zoleta,<br />Full Stack Developer.</h1>
-        <a href="https://github.com/ryanarnold/">GitHub</a>
-      </div>
-      <div id="about">
-        <h3>About Me</h3>
-        <p>Hi there! I'm Ryan, a passionate introvert who loves building things on the internet.</p>
-        <p>
-          My first experience programming was in high school when we had to code websites with HTML
-          and JavaScript. Like every class in school, I thought it mostly boring and was just on.
-        </p>
-        <p>
-          Fast forward a couple years and I tried to self-teach myself Python (with <a
-            href="https://inventwithpython.com/invent4thed/chapter1.html">this website</a
-          >) and oh boy was it a whole different experience. I fell in love with programming almost
-          immediately. For me, programming was literal ✨magic✨. And it was magic that **I** could
-          do. Like, how awesome is that!?
-        </p>
-        <p>
-          At first I wanted to be a game developer, because who doesn't, right? I tried my luck with
-          Game Maker and Pygame and even released a few (ultra) basic games at yoyogames.com.
-        </p>
-        <p>
-          In the end though I just became a boring old developer making boring old applications.
-          Thankfully, I still find the mere process of making something (no matter how boring or
-          niche it is) truly delightful. Though my passion for game dev died out, my passion for
-          programming remain strong till this day.
-        </p>
-        <p>
-          I went to college to get a Computer Science degree and soon got a job as a consultant at
-          Oracle making enterprise billing software for utility companies. Not really exciting, but
-          hey, it paid the bills.
-        </p>
-        <p>
-          But recently, I've wanted to stretch my horizons a bit and try something more exciting.
-        </p>
-        <p>
-          I always wanted to become a web developer. I've always been fascinated with the cool stuff
-          and apps that really smart and creative people put out there (link some inspirational
-          sites here). And so I decided to learn fullstack web dev starting with React.
-        </p>
-        <p>
-          In general, I have a simple phiolosophy: things can be better, and if no one else will
-          make it better, then I should probably do.
-        </p>
+        <div class="container-hero">
+          <div>
+            <h1 id="hero-text">
+              Hi here, I'm Ryan,<br />Full Stack <span class="highlight">Developer</span><br />based
+              in Manila.
+            </h1>
+            <p>
+              I'm a 25-year-old passionate introvert who might have spent too much time in front of
+              computers growing up.
+            </p>
+            <!-- <p>
+              Since high school, I've built countless stuff using just a windows PC and a
+              third-world internet connection. From crude <span class="circle">video games</span> made
+              with Pygame and Game Maker, to <span class="underline"
+                >enterprise billing software</span
+              >, to very niche tiny automation scripts on the cloud that help my daily life just a
+              bit easier.
+            </p>
+            <p>
+              More recently, I've been building <span class="highlight red">fullstack apps</span> and
+              websites using React, Next.js, Express, and TypeScript.
+            </p>
+            <p>
+              My philosophy is to always <span class="highlight green">build for the customer</span
+              >. For each project, I always strive to deeply understand what exactly the customer's
+              needs are and to build something to meet those needs.
+            </p>
+            <p>Everything else is <span class="underline">secondary</span>.</p><br /> -->
+            <br />
+            <button class="main-button">
+              <a href="/#projects" class="hero-link">View Projects</a>
+            </button>
+            <button>
+              <a href="https://github.com/ryanarnold/" class="hero-link">View GitHub</a>
+            </button>
+          </div>
+          <div id="hero-image">
+            <img src="/assets/wfh.png" alt="profile" />
+          </div>
+        </div>
       </div>
 
       <div id="skills">
         <h3>Skills</h3>
         <p>
-          Going into fullstack dev I realized just the breadth of things I had to learn. It's both
-          exciting and overwhelming at times but through diligent self-studying and hacking away at
-          side projects (including countless nights trying to understand what the heck a react
-          "hook" is), I've developed a solid set of skills that allows me to rapidly build fullstack
-          web apps from ideation to deployment.
+          Through the years I've gained a deep understanding of web development concepts necessary
+          for building fullstack apps from ideation to deployment. Though I've finished a Computer
+          Science degree as well as have more than 5 years of experience in a corporate setting,
+          many of the technologies below I had to learn on my own during my spare time.
         </p>
-        <div class="container-4">
+        <div class="container-4" id="skills-list">
           <div>
             <ul>
               <li>React</li>
               <li>JavaScript & TypeScript</li>
               <li>HTML & CSS</li>
-              <li>Java</li>
-              <li>MySQL</li>
-              <li>Firebase</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
               <li>Python</li>
               <li>Django</li>
               <li>Flask</li>
-              <li>Bootstrap</li>
-              <li>Tailwind</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
               <li>Prisma</li>
+              <li>Tailwind</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Firebase</li>
+              <li>MySQL</li>
+              <li>Java</li>
             </ul>
           </div>
         </div>
@@ -121,20 +172,88 @@ import Nagivation from "../components/nagivation.astro";
     </div>
     <div></div>
   </div>
+
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    .container-hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-rows: auto auto;
+      margin-bottom: 50px;
+    }
+
+    .container-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    #hero-image > img {
+      /* width: 50%; */
+      margin-top: 70px;
+    }
+
+    .socials {
+      text-align: left;
+    }
+
+    .social-link {
+      margin-right: 10px;
+    }
+
+    #hero-text {
+      font-size: 4em;
+    }
+
+    h3 {
+      font-size: 2.5em;
+    }
+
+    .hero-link {
+      font-size: 1.25em;
+      text-decoration: none;
+    }
+
+    button {
+      width: 200px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-right: 20px;
+      border: 0;
+      border-radius: 5px;
+    }
+
+    button > a {
+      color: black;
+    }
+
+    .main-button {
+      color: white;
+      background-color: black;
+    }
+
+    .main-button > a {
+      color: white;
+    }
+
+    p {
+      color: #6b6b6b;
+      font-size: 1.25em;
+      line-height: 1.8;
+    }
+
+    #skills-list {
+      color: #6b6b6b;
+      font-size: 1.1em;
+    }
+
+    #skills-list li {
+      margin-bottom: 20px;
+    }
+  </style>
 </BaseLayout>
-
-<style>
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .socials {
-    text-align: left;
-  }
-
-  .social-link {
-    margin-right: 10px;
-  }
-</style>
